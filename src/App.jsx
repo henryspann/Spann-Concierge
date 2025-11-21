@@ -121,8 +121,7 @@ function VendorsPage() {
   const vendorCategories = [
     {
       title: "Automotive Vendors",
-      desc: "Transport, detailing, storage, and exotic car specialists.",
-      examples: ["Montway Enclosed Transport", "Ferrari Nashville Detail Studio", "Chattanooga Exotic Garage"]
+      examples: ["Enclosed transport & logistics","Exotic and luxury vehicle detailing","Long-term and short-term storage","Performance tuning and maintenance","Rally support & event transport coordination"]
     },
     {
       title: "Aviation Vendors",
