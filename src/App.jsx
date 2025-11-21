@@ -270,21 +270,6 @@ function FormsPage() {
           onChange={handleChange}
         />
 
-        <textarea
-          name="vehicles"
-          placeholder="Vehicles Owned (optional)"
-          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="needs"
-          placeholder="What do you need help with?"
-          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
-          onChange={handleChange}
-          required
-        />
-
         <select
           name="contactMethod"
           className="w-full p-3 rounded bg-neutral-800 text-white"
@@ -296,8 +281,23 @@ function FormsPage() {
         </select>
 
         <textarea
+          name="needs"
+          placeholder="What do you need help with?"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+          required
+        />
+
+        <textarea
           name="urgent"
           placeholder="Urgent tasks?"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="vehicles"
+          placeholder="Vehicles Owned (optional)"
           className="w-full p-3 rounded bg-neutral-800 text-white h-24"
           onChange={handleChange}
         />
