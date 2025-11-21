@@ -1,0 +1,267 @@
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+function WaitlistPage() {
+  return (
+    <div className="min-h-screen bg-black text-white py-24 px-8 text-center">
+      <h1 className="text-5xl font-bold mb-8" style={{ fontFamily: 'Cinzel, serif' }}>2027 Waitlist</h1>
+      <p className="text-gray-300 max-w-3xl mx-auto mb-10 text-lg">
+        The <span className="font-semibold text-white">Spann Concierge Insurance Waitlist</span> marks the beginning of a new era in luxury insurance and lifestyle management.
+        Our 2027 launch will introduce a fully integrated insurance and concierge ecosystem built for high-net-worth individuals, collectors, and exotic asset owners.
+      </p>
+      <p className="text-gray-400 max-w-3xl mx-auto mb-12">
+        By joining the waitlist, you’ll gain early access to our bespoke insurance solutions, curated vendor partnerships, and exclusive events that define the Spann experience.
+        Members will receive early invitations, private onboarding opportunities, and priority access to our concierge network.
+      </p>
+      <form className="max-w-lg mx-auto space-y-6">
+        <input type="text" placeholder="Full Name" className="w-full p-3 rounded bg-neutral-800 text-white" required />
+        <input type="email" placeholder="Email Address" className="w-full p-3 rounded bg-neutral-800 text-white" required />
+        <Button type="submit" className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300">Join the 2027 Waitlist</Button>
+      </form>
+    </div>
+  );
+}
+
+function TierPage({ renewalTiers }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const tier = renewalTiers.find((t) => t.id === parseInt(id));
+
+  if (!tier) return <div className="text-center text-white py-20">Tier not found</div>;
+
+  return (
+    <div className="relative z-10 min-h-screen bg-black text-white py-24 px-8 text-center">
+      <motion.h1 className="text-5xl font-bold mb-6" style={{ fontFamily: 'Cinzel, serif' }}>{tier.tier}</motion.h1>
+      <p className="text-xl text-gray-300 mb-4">{tier.price}</p>
+      <p className="text-gray-400 max-w-2xl mx-auto mb-12">{tier.desc}</p>
+      <div className="max-w-2xl mx-auto mb-10 text-left">
+        <h2 className="text-2xl font-semibold mb-4">What’s Included</h2>
+        <ul className="list-disc list-inside text-gray-300 space-y-2">
+          {tier.includes.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="max-w-lg mx-auto bg-neutral-900/80 border border-neutral-800 rounded-2xl p-8 mb-12">
+        <h3 className="text-2xl font-semibold mb-4">Why Upgrade?</h3>
+        <p className="text-gray-400 mb-6">
+          Each tier unlocks more than service — it’s about trust, speed, and access. Higher tiers mean direct access to
+          our private vendor network, reduced turnaround times, and dedicated personal support.
+        </p>
+        <Button className="bg-white text-black w-full py-3 rounded-xl text-lg hover:bg-gray-300" onClick={() => navigate('/contact')}>
+          Contact to Join {tier.tier}
+        </Button>
+      </div>
+      <Button className="bg-white text-black py-3 px-8 text-lg rounded-xl hover:bg-gray-300" onClick={() => navigate('/contact')}>
+        Proceed to Payment / Contact
+      </Button>
+    </div>
+  );
+}
+
+function HomePage({ renewalTiers }) {
+  const navigate = useNavigate();
+  return (
+    <div className="relative z-10">
+      <section className="relative h-screen flex flex-col justify-center items-center text-center px-6">
+        <motion.h1 className="text-5xl md:text-7xl font-bold mb-6 text-white" style={{ fontFamily: 'Cinzel, serif' }} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>Spann Concierge</motion.h1>
+        <motion.p className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>Private Asset & Lifestyle Management for Discerning Clients</motion.p>
+      </section>
+
+      <section className="py-24 bg-neutral-950/80 text-center backdrop-blur-sm">
+        <h2 className="text-4xl font-semibold mb-12">Concierge Renewal Tiers</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-10 md:px-20 items-stretch">
+          {renewalTiers.map((tier) => (
+            <Card key={tier.id} className="bg-neutral-900/90 border border-neutral-800 rounded-2xl flex flex-col justify-between hover:shadow-xl h-full">
+              <CardContent className="p-8 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-white">{tier.tier}</h3>
+                  <p className="text-gray-100 text-xl mb-4">{tier.price}</p>
+                  <p className="text-gray-400 mb-6">{tier.desc}</p>
+                </div>
+                <Button className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300 mt-auto" onClick={() => navigate(`/tier/${tier.id}`)}>View Details</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-24 bg-black/90 text-center">
+        <h2 className="text-4xl font-semibold mb-12 text-white">Our Core Services</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-10 md:px-20">
+          {[
+            { title: "Vehicle Logistics", desc: "Enclosed transport, detailing, storage, and restoration coordination for high-value automobiles." },
+            { title: "Lifestyle Management", desc: "Private charters, reservations, events, and time-sensitive requests handled seamlessly." },
+            { title: "Asset Concierge", desc: "Appraisals, valuations, and vendor coordination for collections, properties, and valuables." }
+          ].map((service, index) => (
+            <Card key={index} className="bg-neutral-900/90 border border-neutral-800 rounded-2xl hover:shadow-xl">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
+                <p className="text-gray-200">{service.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <footer className="py-10 bg-black text-center text-gray-600 text-sm">
+        <p>© 2025 Spann Concierge. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+function VendorsPage() {
+  const vendorCategories = [
+    {
+      title: "Automotive Vendors",
+      desc: "Transport, detailing, storage, and exotic car specialists.",
+      examples: ["Montway Enclosed Transport", "Ferrari Nashville Detail Studio", "Chattanooga Exotic Garage"]
+    },
+    {
+      title: "Aviation Vendors",
+      desc: "Private jet charters, aircraft management, and emergency lift services.",
+      examples: ["WheelsUp", "FlexJet", "Jet Linx Nashville"]
+    },
+    {
+      title: "Hospitality & Lifestyle",
+      desc: "Elite restaurants, clubs, event planners, and premium reservations.",
+      examples: ["Four Seasons Nashville", "Cumberland Private Dining", "Atlanta Highline Events"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-black pt-28 pb-16 text-white text-center px-6">
+      <h1 className="text-5xl font-bold mb-10" style={{ fontFamily: 'Cinzel, serif' }}>Vendor Network</h1>
+      <p className="text-gray-300 max-w-3xl mx-auto mb-16 text-lg">
+        Our concierge service relies on a hand-built network of premium vendors. These are the partners we leverage to
+        deliver fast, high-end results for our clients across automotive, aviation, property, and lifestyle services.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        {vendorCategories.map((cat, i) => (
+          <Card key={i} className="bg-neutral-900/90 border border-neutral-800 rounded-2xl">
+            <CardContent>
+              <h3 className="text-2xl font-semibold mb-3 text-white">{cat.title}</h3>
+              <p className="text-gray-400 mb-4">{cat.desc}</p>
+              <ul className="text-gray-300 space-y-1">
+                {cat.examples.map((ex, idx) => (
+                  <li key={idx}>• {ex}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ContactPage() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', contactMethod: 'email', message: '' });
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleSubmit = (e) => { e.preventDefault(); };
+
+  return (
+    <div className="min-h-screen bg-black pt-28 pb-16 text-white px-8 text-center">
+      <h1 className="text-5xl font-bold mb-8" style={{ fontFamily: 'Cinzel, serif' }}>Contact Us</h1>
+      <p className="text-gray-300 max-w-xl mx-auto mb-10">
+        For membership inquiries, logistics coordination, or tier upgrades, reach out using the form below.
+        Messages go directly into our concierge pipeline.
+      </p>
+
+      <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-6 bg-neutral-900/60 p-10 rounded-2xl border border-neutral-800">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <input type="text" name="name" placeholder="Full Name" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange} required />
+        <input type="tel" name="phone" placeholder="Phone Number" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange} />
+
+        <select name="contactMethod" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange}>
+          <option value="email">Email</option>
+          <option value="text">Text</option>
+          <option value="call">Call</option>
+        </select>
+
+        <textarea name="message" placeholder="How can we assist you?" className="w-full p-3 rounded bg-neutral-800 text-white h-32" onChange={handleChange}></textarea>
+
+        <Button type="submit" className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300">Submit</Button>
+      </form>
+    </div>
+  );
+}
+
+export default function SpannConciergeSite() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const stars = Array.from({ length: 400 }, () => ({ x: Math.random() * width - width / 2, y: Math.random() * height - height / 2, z: Math.random() * width }));
+
+    const animate = () => {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = 'white';
+      stars.forEach((star) => {
+        star.z -= 1.2;
+        if (star.z <= 0) star.z = width;
+        const k = 128.0 / star.z;
+        const px = star.x * k + width / 2;
+        const py = star.y * k + height / 2;
+        if (px >= 0 && px <= width && py >= 0 && py <= height) {
+          const size = (1 - star.z / width) * 2.5;
+          ctx.beginPath();
+          ctx.arc(px, py, size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+      requestAnimationFrame(animate);
+    };
+    animate();
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+  }, []);
+
+  const renewalTiers = [
+    { id: 1, tier: 'Tier I', price: '$1,000 / Month', desc: 'Priority coordination for vehicle logistics and travel arrangements.', includes: ['Dedicated concierge contact', '24-hour response time', 'Vehicle transport scheduling', 'Exclusive event access opportunities'] },
+    { id: 2, tier: 'Tier II', price: '$2,000 / Month', desc: 'Full asset concierge coverage including exotics, properties, and events.', includes: ['Comprehensive concierge access', 'Private property management assistance', 'Priority vendor booking', 'Weekend emergency support'] },
+    { id: 3, tier: 'Tier III', price: '$3,000 / Month', desc: 'Ultra-priority concierge service with 24/7 response and private vendor access.', includes: ['24/7 personal concierge team', 'Private air and yacht coordination', 'Top-tier vendor network access', 'Direct founder contact line'] }
+  ];
+
+  return (
+    <Router>
+      <nav className="fixed top-0 left-0 w-full bg-black z-50 text-white flex justify-between items-center px-8 py-4">
+        <div className="flex items-center space-x-6">
+          <Link to="/" className="text-xl tracking-wide" style={{ fontFamily: 'Cinzel, serif' }}>Spann Concierge</Link>
+          <Link to="/waitlist" className="hover:text-gray-400">2027 Waitlist</Link>
+        </div>
+        <div className="space-x-6">
+          <Link to="/vendors" className="hover:text-gray-400">Vendors</Link>
+          <Link to="/contact" className="hover:text-gray-400">Contact</Link>
+        </div>
+      </nav>
+
+      <div className="relative pt-20 min-h-screen bg-black text-white font-sans overflow-hidden">
+        <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0" />
+        <div className="relative z-10">
+          <Routes>
+            <Route path="/" element={<HomePage renewalTiers={renewalTiers} />} />
+            <Route path="/tier/:id" element={<TierPage renewalTiers={renewalTiers} />} />
+            <Route path="/waitlist" element={<WaitlistPage />} />
+            <Route path="/vendors" element={<VendorsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
+}
