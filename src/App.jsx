@@ -139,6 +139,10 @@ function VendorsPage() {
       title: "How We Choose Our Partners",
       desc: "Every service provider we work with is screened for:",
       examples: ["Professionalism","Discretion","Reliability","Liability coverage","Proven track record with high-net-worth clientele"]
+    },
+    {
+      title: "Your Request, Our Network",
+      desc: "No matter the request — logistics, travel, property, or something completely custom — our vetted network ensures every need is handled with precision and efficiency.",
     }
   ];
 
