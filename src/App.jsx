@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 
+
+
 function WaitlistPage() {
   return (
     <div className="min-h-screen bg-black text-white py-24 px-8 text-center">
@@ -94,9 +96,9 @@ function HomePage({ renewalTiers }) {
         <h2 className="text-4xl font-semibold mb-12 text-white">Our Core Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-10 md:px-20">
           {[
-            { title: "Vehicle Logistics", desc: "Enclosed transport, detailing, storage, and restoration coordination for high-value automobiles." },
-            { title: "Lifestyle Management", desc: "Private charters, reservations, events, and time-sensitive requests handled seamlessly." },
-            { title: "Asset Concierge", desc: "Appraisals, valuations, and vendor coordination for collections, properties, and valuables." }
+            { title: "Vehicle Logistics", desc: "Enclosed transport, storage coordination, detailing management, and rally support for high-value or exotic automobiles." },
+            { title: "Lifestyle Management", desc: "Charters, reservations, personal arrangements, luxury travel coordination, and time-sensitive concierge tasks executed seamlessly." },
+            { title: "Asset Concierge", desc: "Oversight, vendor management, and coordination for vehicles, properties, collections, valuables, and premium lifestyle assets." }
           ].map((service, index) => (
             <Card key={index} className="bg-neutral-900/90 border border-neutral-800 rounded-2xl hover:shadow-xl">
               <CardContent className="p-8">
@@ -119,18 +121,29 @@ function VendorsPage() {
   const vendorCategories = [
     {
       title: "Automotive Vendors",
-      desc: "Transport, detailing, storage, and exotic car specialists.",
-      examples: ["Montway Enclosed Transport", "Ferrari Nashville Detail Studio", "Chattanooga Exotic Garage"]
+      examples: ["Enclosed transport & logistics","Exotic and luxury vehicle detailing","Long-term and short-term storage","Performance tuning and maintenance","Rally support & event transport coordination"]
     },
     {
-      title: "Aviation Vendors",
-      desc: "Private jet charters, aircraft management, and emergency lift services.",
-      examples: ["WheelsUp", "FlexJet", "Jet Linx Nashville"]
+      title: "Travel & Lifestyle Services",
+      examples: ["Private jet and charter bookings","Luxury accommodations & itinerary planning","Restaurant and nightlife reservations","Personal security & VIP access arrangements","Tailored trip and event planning"]
     },
     {
-      title: "Hospitality & Lifestyle",
-      desc: "Elite restaurants, clubs, event planners, and premium reservations.",
-      examples: ["Four Seasons Nashville", "Cumberland Private Dining", "Atlanta Highline Events"]
+      title: "Property & Asset Services",
+      examples: ["Residential and estate management","Property maintenance and repair coordination","Art and collectible storage & transport","Appraisals and valuations","Premium asset oversight"]
+    },
+    {
+      title: "Specialized Concierge Requests",
+      examples: ["Access to exclusive events and experiences","High-priority sourcing of hard-to-find items","Professional service coordination","Time-sensitive personal errands","Emergency or urgent request management"]
+    },
+    {
+      title: "How We Choose Our Partners",
+      desc: "Every service provider we work with is screened for:",
+      examples: ["Professionalism","Discretion","Reliability","Liability coverage","Proven track record with high-net-worth clientele"]
+    },
+    {
+      title: "Your Request, Our Network",
+      desc: "For anything outside the usual categories, we activate the right partners instantly — tailored, discreet, and handled without delay.",
+      examples: ["Rare-item sourcing","Custom logistics","VIP access","Specialist coordination","Last-minute changes"]
     }
   ];
 
@@ -139,7 +152,7 @@ function VendorsPage() {
       <h1 className="text-5xl font-bold mb-10" style={{ fontFamily: 'Cinzel, serif' }}>Vendor Network</h1>
       <p className="text-gray-300 max-w-3xl mx-auto mb-16 text-lg">
         Our concierge service relies on a hand-built network of premium vendors. These are the partners we leverage to
-        deliver fast, high-end results for our clients across automotive, aviation, property, and lifestyle services.
+        deliver fast, high-end results for our clients across automotive, property, and lifestyle services.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {vendorCategories.map((cat, i) => (
@@ -194,6 +207,112 @@ function ContactPage() {
   );
 }
 
+function FormsPage() {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    vehicles: "",
+    needs: "",
+    urgent: "",
+    contactMethod: "email",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className="min-h-screen bg-black pt-28 pb-16 text-white px-8 text-center">
+      <h1 className="text-5xl font-bold mb-8" style={{ fontFamily: "Cinzel, serif" }}>
+        Concierge Intake Form
+      </h1>
+
+      <p className="text-gray-300 max-w-xl mx-auto mb-10">
+        Complete this form to begin concierge onboarding.  
+        Your information goes directly into our concierge pipeline.
+      </p>
+
+      <form
+        name="intake"
+        method="POST"
+        data-netlify="true"
+        onSubmit={handleSubmit}
+        className="max-w-xl mx-auto space-y-6 bg-neutral-900/60 p-10 rounded-2xl border border-neutral-800"
+      >
+        <input type="hidden" name="form-name" value="intake" />
+
+        <input
+          name="name"
+          placeholder="Full Name"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="phone"
+          placeholder="Phone Number"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+        />
+
+        <select
+          name="contactMethod"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+        >
+          <option value="email">Email</option>
+          <option value="text">Text</option>
+          <option value="call">Call</option>
+        </select>
+
+        <textarea
+          name="needs"
+          placeholder="What do you need help with?"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+          required
+        />
+
+        <textarea
+          name="urgent"
+          placeholder="Urgent tasks?"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="vehicles"
+          placeholder="Vehicles Owned (optional)"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+        />
+
+        <button
+          type="submit"
+          className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300"
+        >
+          Submit Intake
+        </button>
+      </form>
+    </div>
+  );
+}
+
 export default function SpannConciergeSite() {
   const canvasRef = useRef(null);
 
@@ -233,9 +352,9 @@ export default function SpannConciergeSite() {
   }, []);
 
   const renewalTiers = [
-    { id: 1, tier: 'Tier I', price: '$1,000 / Month', desc: 'Priority coordination for vehicle logistics and travel arrangements.', includes: ['Dedicated concierge contact', '24-hour response time', 'Vehicle transport scheduling', 'Exclusive event access opportunities'] },
-    { id: 2, tier: 'Tier II', price: '$2,000 / Month', desc: 'Full asset concierge coverage including exotics, properties, and events.', includes: ['Comprehensive concierge access', 'Private property management assistance', 'Priority vendor booking', 'Weekend emergency support'] },
-    { id: 3, tier: 'Tier III', price: '$3,000 / Month', desc: 'Ultra-priority concierge service with 24/7 response and private vendor access.', includes: ['24/7 personal concierge team', 'Private air and yacht coordination', 'Top-tier vendor network access', 'Direct founder contact line'] }
+    { id: 1, tier: 'Tier I', price: '$300 / Month', desc: 'Foundational concierge coverage for essential logistics, travel arrangements, and general coordination across vehicles and lifestyle needs.', includes: ['Dedicated concierge contact', '24-hour response time', 'Vehicle transport scheduling', 'Exclusive event access opportunities'] },
+    { id: 2, tier: 'Tier II', price: '$500 / Month', desc: 'Full asset concierge with priority handling for exotics, real estate, events, and lifestyle management. Ideal for clients with multiple assets or recurring requests.', includes: ['Comprehensive concierge access', 'Private property management assistance', 'Priority vendor booking', 'Weekend emergency support'] },
+    { id: 3, tier: 'Tier III', price: '$1,000 / Month', desc: 'Ultra-priority concierge with 24/7 response, private vendor access, rapid logistics, and full-service management across all assets and lifestyle categories.', includes: ['24/7 personal concierge team', 'Private air and yacht coordination', 'Top-tier vendor network access', 'Direct founder contact line'] }
   ];
 
   return (
@@ -248,6 +367,8 @@ export default function SpannConciergeSite() {
         <div className="space-x-6">
           <Link to="/vendors" className="hover:text-gray-400">Vendors</Link>
           <Link to="/contact" className="hover:text-gray-400">Contact</Link>
+          <Link to="/forms" className="hover:text-gray-400">Forms</Link>
+
         </div>
       </nav>
 
@@ -260,6 +381,8 @@ export default function SpannConciergeSite() {
             <Route path="/waitlist" element={<WaitlistPage />} />
             <Route path="/vendors" element={<VendorsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/forms" element={<FormsPage />} />
+
           </Routes>
         </div>
       </div>
