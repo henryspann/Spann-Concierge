@@ -134,6 +134,11 @@ function VendorsPage() {
     {
       title: "Specialized Concierge Requests",
       examples: ["Access to exclusive events and experiences","High-priority sourcing of hard-to-find items","Professional service coordination","Time-sensitive personal errands","Emergency or urgent request management"]
+    },
+    {
+      title: "How We Choose Our Partners",
+      desc: "Every service provider we work with is screened for:",
+      examples: ["Professionalism","Discretion","Reliability","Liability coverage","Proven track record with high-net-worth clientele"]
     }
   ];
 
