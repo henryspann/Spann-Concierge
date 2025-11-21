@@ -368,7 +368,7 @@ export default function SpannConciergeSite() {
         <div className="space-x-6">
           <Link to="/vendors" className="hover:text-gray-400">Vendors</Link>
           <Link to="/contact" className="hover:text-gray-400">Contact</Link>
-          <Link to="/forms" className="hover:text-gray-400">Forms</Link>
+          <Link to="/intake" className="hover:text-gray-400">Forms</Link>
 
         </div>
       </nav>
@@ -382,7 +382,7 @@ export default function SpannConciergeSite() {
             <Route path="/waitlist" element={<WaitlistPage />} />
             <Route path="/vendors" element={<VendorsPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/forms" element={<FormsPage />} />
+            <Route path="/forms" element={<IntakePage />} />
             <Route path="/intake" element={<IntakePage />} />
 
           </Routes>
