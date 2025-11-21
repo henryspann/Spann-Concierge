@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 
+
+
 function WaitlistPage() {
   return (
     <div className="min-h-screen bg-black text-white py-24 px-8 text-center">
@@ -194,6 +196,112 @@ function ContactPage() {
   );
 }
 
+function FormsPage() {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    vehicles: "",
+    needs: "",
+    urgent: "",
+    contactMethod: "email",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className="min-h-screen bg-black pt-28 pb-16 text-white px-8 text-center">
+      <h1 className="text-5xl font-bold mb-8" style={{ fontFamily: "Cinzel, serif" }}>
+        Concierge Intake Form
+      </h1>
+
+      <p className="text-gray-300 max-w-xl mx-auto mb-10">
+        Complete this form to begin concierge onboarding.  
+        Your information goes directly into our concierge pipeline.
+      </p>
+
+      <form
+        name="intake"
+        method="POST"
+        data-netlify="true"
+        onSubmit={handleSubmit}
+        className="max-w-xl mx-auto space-y-6 bg-neutral-900/60 p-10 rounded-2xl border border-neutral-800"
+      >
+        <input type="hidden" name="form-name" value="intake" />
+
+        <input
+          name="name"
+          placeholder="Full Name"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="phone"
+          placeholder="Phone Number"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="vehicles"
+          placeholder="Vehicles Owned (optional)"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="needs"
+          placeholder="What do you need help with?"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+          required
+        />
+
+        <select
+          name="contactMethod"
+          className="w-full p-3 rounded bg-neutral-800 text-white"
+          onChange={handleChange}
+        >
+          <option value="email">Email</option>
+          <option value="text">Text</option>
+          <option value="call">Call</option>
+        </select>
+
+        <textarea
+          name="urgent"
+          placeholder="Urgent tasks?"
+          className="w-full p-3 rounded bg-neutral-800 text-white h-24"
+          onChange={handleChange}
+        />
+
+        <button
+          type="submit"
+          className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300"
+        >
+          Submit Intake
+        </button>
+      </form>
+    </div>
+  );
+}
+
 export default function SpannConciergeSite() {
   const canvasRef = useRef(null);
 
@@ -248,6 +356,8 @@ export default function SpannConciergeSite() {
         <div className="space-x-6">
           <Link to="/vendors" className="hover:text-gray-400">Vendors</Link>
           <Link to="/contact" className="hover:text-gray-400">Contact</Link>
+          <Link to="/forms" className="hover:text-gray-400">Forms</Link>
+
         </div>
       </nav>
 
@@ -260,6 +370,8 @@ export default function SpannConciergeSite() {
             <Route path="/waitlist" element={<WaitlistPage />} />
             <Route path="/vendors" element={<VendorsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/forms" element={<FormsPage />} />
+
           </Routes>
         </div>
       </div>
