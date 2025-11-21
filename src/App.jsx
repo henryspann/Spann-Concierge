@@ -341,9 +341,9 @@ export default function SpannConciergeSite() {
   }, []);
 
   const renewalTiers = [
-    { id: 1, tier: 'Tier I', price: '$300 / Month', desc: 'Priority coordination for vehicle logistics and travel arrangements.', includes: ['Dedicated concierge contact', '24-hour response time', 'Vehicle transport scheduling', 'Exclusive event access opportunities'] },
-    { id: 2, tier: 'Tier II', price: '$500 / Month', desc: 'Full asset concierge coverage including exotics, properties, and events.', includes: ['Comprehensive concierge access', 'Private property management assistance', 'Priority vendor booking', 'Weekend emergency support'] },
-    { id: 3, tier: 'Tier III', price: '$1,000 / Month', desc: 'Ultra-priority concierge service with 24/7 response and private vendor access.', includes: ['24/7 personal concierge team', 'Private air and yacht coordination', 'Top-tier vendor network access', 'Direct founder contact line'] }
+    { id: 1, tier: 'Tier I', price: '$300 / Month', desc: 'Foundational concierge coverage for essential logistics, travel arrangements, and general coordination across vehicles and lifestyle needs.', includes: ['Dedicated concierge contact', '24-hour response time', 'Vehicle transport scheduling', 'Exclusive event access opportunities'] },
+    { id: 2, tier: 'Tier II', price: '$500 / Month', desc: 'Full asset concierge with priority handling for exotics, real estate, events, and lifestyle management. Ideal for clients with multiple assets or recurring requests.', includes: ['Comprehensive concierge access', 'Private property management assistance', 'Priority vendor booking', 'Weekend emergency support'] },
+    { id: 3, tier: 'Tier III', price: '$1,000 / Month', desc: 'Ultra-priority concierge with 24/7 response, private vendor access, rapid logistics, and full-service management across all assets and lifestyle categories.', includes: ['24/7 personal concierge team', 'Private air and yacht coordination', 'Top-tier vendor network access', 'Direct founder contact line'] }
   ];
 
   return (
