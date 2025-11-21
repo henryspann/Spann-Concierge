@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
+import IntakePage from "./pages/Intake";
 
 
 
@@ -382,6 +383,7 @@ export default function SpannConciergeSite() {
             <Route path="/vendors" element={<VendorsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/forms" element={<FormsPage />} />
+            <Route path="/intake" element={<IntakePage />} />
 
           </Routes>
         </div>
