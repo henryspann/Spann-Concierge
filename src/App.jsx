@@ -130,6 +130,10 @@ function VendorsPage() {
     {
       title: "Property & Asset Services",
       examples: ["Residential and estate management","Property maintenance and repair coordination","Art and collectible storage & transport","Appraisals and valuations","Premium asset oversight"]
+    },
+    {
+      title: "Specialized Concierge Requests",
+      examples: ["Access to exclusive events and experiences","High-priority sourcing of hard-to-find items","Professional service coordination","Time-sensitive personal errands","Emergency or urgent request management"]
     }
   ];
 
@@ -138,7 +142,7 @@ function VendorsPage() {
       <h1 className="text-5xl font-bold mb-10" style={{ fontFamily: 'Cinzel, serif' }}>Vendor Network</h1>
       <p className="text-gray-300 max-w-3xl mx-auto mb-16 text-lg">
         Our concierge service relies on a hand-built network of premium vendors. These are the partners we leverage to
-        deliver fast, high-end results for our clients across automotive, aviation, property, and lifestyle services.
+        deliver fast, high-end results for our clients across automotive, property, and lifestyle services.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {vendorCategories.map((cat, i) => (
