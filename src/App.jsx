@@ -142,7 +142,7 @@ function VendorsPage() {
     },
     {
       title: "Your Request, Our Network",
-      examples: "No matter the request — logistics, travel, property, or something completely custom — our vetted network ensures every need is handled with precision and efficiency.",
+      examples: ["No matter the request — logistics, travel, property, or something completely custom — our vetted network ensures every need is handled with precision and efficiency."]
     }
   ];
 
