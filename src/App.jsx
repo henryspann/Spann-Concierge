@@ -124,14 +124,12 @@ function VendorsPage() {
       examples: ["Enclosed transport & logistics","Exotic and luxury vehicle detailing","Long-term and short-term storage","Performance tuning and maintenance","Rally support & event transport coordination"]
     },
     {
-      title: "Aviation Vendors",
-      desc: "Private jet charters, aircraft management, and emergency lift services.",
-      examples: ["WheelsUp", "FlexJet", "Jet Linx Nashville"]
+      title: "Travel & Lifestyle Services",
+      examples: ["Private jet and charter bookings","Luxury accommodations & itinerary planning","Restaurant and nightlife reservations","Personal security & VIP access arrangements","Tailored trip and event planning"]
     },
     {
-      title: "Hospitality & Lifestyle",
-      desc: "Elite restaurants, clubs, event planners, and premium reservations.",
-      examples: ["Four Seasons Nashville", "Cumberland Private Dining", "Atlanta Highline Events"]
+      title: "Property & Asset Services",
+      examples: ["Residential and estate management","Property maintenance and repair coordination","Art and collectible storage & transport","Appraisals and valuations","Premium asset oversight"]
     }
   ];
 
