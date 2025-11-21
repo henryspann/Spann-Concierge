@@ -142,7 +142,8 @@ function VendorsPage() {
     },
     {
       title: "Your Request, Our Network",
-      examples: ["No matter the request — logistics, travel, property, or something completely custom — our vetted network ensures every need is handled with precision and efficiency."]
+      desc: "For anything outside the usual categories, we activate the right partners instantly — tailored, discreet, and handled without delay.",
+      examples: ["Rare-item sourcing","Custom logistics","VIP access","Specialist coordination","Last-minute changes"]
     }
   ];
 
