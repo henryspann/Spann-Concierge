@@ -96,9 +96,9 @@ function HomePage({ renewalTiers }) {
         <h2 className="text-4xl font-semibold mb-12 text-white">Our Core Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-10 md:px-20">
           {[
-            { title: "Vehicle Logistics", desc: "Enclosed transport, detailing, storage, and restoration coordination for high-value automobiles." },
-            { title: "Lifestyle Management", desc: "Private charters, reservations, events, and time-sensitive requests handled seamlessly." },
-            { title: "Asset Concierge", desc: "Appraisals, valuations, and vendor coordination for collections, properties, and valuables." }
+            { title: "Vehicle Logistics", desc: "Enclosed transport, storage coordination, detailing management, and rally support for high-value or exotic automobiles." },
+            { title: "Lifestyle Management", desc: "Charters, reservations, personal arrangements, luxury travel coordination, and time-sensitive concierge tasks executed seamlessly." },
+            { title: "Asset Concierge", desc: "Oversight, vendor management, and coordination for vehicles, properties, collections, valuables, and premium lifestyle assets." }
           ].map((service, index) => (
             <Card key={index} className="bg-neutral-900/90 border border-neutral-800 rounded-2xl hover:shadow-xl">
               <CardContent className="p-8">
