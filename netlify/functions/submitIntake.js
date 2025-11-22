@@ -8,13 +8,12 @@ exports.handler = async (event, context) => {
     }
 
     const data = JSON.parse(event.body);
+    console.log("Received form payload:", data);
 
-    // Airtable details
     const baseId = process.env.AIRTABLE_BASE_ID;
-    const tableId = "tbl1b8H0ysthDAeGzW";  // Intake Submissions table
+    const tableId = process.env.AIRTABLE_TABLE_ID;
     const apiUrl = `https://api.airtable.com/v0/${baseId}/${tableId}`;
 
-    // Payload to Airtable
     const payload = {
       fields: {
         "Name": data.name,
@@ -23,20 +22,23 @@ exports.handler = async (event, context) => {
         "Vehicles Owned": data.vehicles || "",
         "Initial Request": data.request || "",
         "Urgent Tasks": data.urgent || "",
-        "Preferred Contact": data.preferredContact || ""
+        "Preferred Contact": data.preferredContact || "",
       }
     };
+
+    console.log("Sending payload to Airtable:", payload);
 
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${process.env.AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
 
     const result = await response.json();
+    console.log("Airtable response:", result);
 
     return {
       statusCode: 200,
@@ -44,6 +46,7 @@ exports.handler = async (event, context) => {
     };
 
   } catch (err) {
+    console.error("Function Error:", err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: err.toString() }),
