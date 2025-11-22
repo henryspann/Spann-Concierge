@@ -56,11 +56,11 @@ function TierPage({ renewalTiers }) {
           our private vendor network, reduced turnaround times, and dedicated personal support.
         </p>
         <Button className="bg-white text-black w-full py-3 rounded-xl text-lg hover:bg-gray-300" onClick={() => navigate('/contact')}>
-          Contact to Join {tier.tier}
+          Scheudle to Join {tier.tier}
         </Button>
       </div>
       <Button className="bg-white text-black py-3 px-8 text-lg rounded-xl hover:bg-gray-300" onClick={() => navigate('/contact')}>
-        Proceed to Payment / Contact
+        Proceed to Payment
       </Button>
     </div>
   );
