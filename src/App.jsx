@@ -353,9 +353,9 @@ export default function SpannConciergeSite() {
   }, []);
 
   const renewalTiers = [
-    { id: 1, tier: 'Tier I', price: '$300 / Month', desc: 'Foundational concierge coverage for essential logistics, travel arrangements, and general coordination across vehicles and lifestyle needs.', includes: ['Dedicated concierge contact', '24-hour response time', 'Vehicle transport scheduling', 'Exclusive event access opportunities'] },
-    { id: 2, tier: 'Tier II', price: '$500 / Month', desc: 'Full asset concierge with priority handling for exotics, real estate, events, and lifestyle management. Ideal for clients with multiple assets or recurring requests.', includes: ['Comprehensive concierge access', 'Private property management assistance', 'Priority vendor booking', 'Weekend emergency support'] },
-    { id: 3, tier: 'Tier III', price: '$1,000 / Month', desc: 'Ultra-priority concierge with 24/7 response, private vendor access, rapid logistics, and full-service management across all assets and lifestyle categories.', includes: ['24/7 personal concierge team', 'Private air and yacht coordination', 'Top-tier vendor network access', 'Direct founder contact line'] }
+    { id: 1, tier: 'Tier I', price: '$300 / Month', desc: 'You get a reliable go-to operator who handles the everyday tasks you don’t want to deal with — travel planning, logistics, coordination, reminders, and small but time-consuming errands.', includes: ['A dedicated concierge contact — one person you message for everything.','Same-day replies (within 24 hours) for any request.','We schedule and coordinate your vehicle logistics — transports, appointments, upkeep, repairs.','We handle your basic travel arrangements — bookings, reservations, confirmations.','Preferred access to select events and opportunities through our partner network.'] },
+    { id: 2, tier: 'Tier II', price: '$500 / Month', desc: 'This tier becomes your personal operations manager. We handle recurring needs, keep your assets running smoothly, coordinate multiple moving parts, and solve problems faster.', includes: ['Priority access — your requests go to the front of the line.','Full concierge support across your cars, properties, scheduling, and lifestyle needs.','Property management assistance — we coordinate cleaners, maintenance, appointments, and services.','Priority vendor booking — we reserve spots with our preferred vendors before the general public.','Weekend emergency support for last-minute situations or time-sensitive needs.'] },
+    { id: 3, tier: 'Tier III', price: '$1,000 / Month', desc: 'You get elite, immediate support for every aspect of your lifestyle: travel, vehicles, events, logistics, emergencies, and complex coordination.This is the tier for clients who need speed, privacy, reliability, and concierge-level execution around the clock — without compromise.', includes: ['A 24/7 personal concierge team — call or message anytime, day or night.','Private air, charter, and yacht coordination handled end-to-end.','Access to our highest-tier vendor network with the fastest response times and premium services.','Direct founder contact line for urgent, sensitive, or complex needs.','Rapid turnaround for all requests — same hour, not same day.'] }
   ];
 
   return (
@@ -378,12 +378,15 @@ export default function SpannConciergeSite() {
         <div className="relative z-10">
           <Routes>
             <Route path="/" element={<HomePage renewalTiers={renewalTiers} />} />
-            <Route path="/tier/:id" element={<TierPage renewalTiers={renewalTiers} />} />
             <Route path="/waitlist" element={<WaitlistPage />} />
             <Route path="/vendors" element={<VendorsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+
+            {/* 🚀 BOTH ROUTES NOW LOAD THE SAME CORRECT PAGE */}
             <Route path="/forms" element={<IntakePage />} />
             <Route path="/intake" element={<IntakePage />} />
+
+            <Route path="/tier/:id" element={<TierPage renewalTiers={renewalTiers} />} />
 
           </Routes>
         </div>
