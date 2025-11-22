@@ -174,40 +174,6 @@ function VendorsPage() {
   );
 }
 
-function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', contactMethod: 'email', message: '' });
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => { e.preventDefault(); };
-
-  return (
-    <div className="min-h-screen bg-black pt-28 pb-16 text-white px-8 text-center">
-      <h1 className="text-5xl font-bold mb-8" style={{ fontFamily: 'Cinzel, serif' }}>Contact Us</h1>
-      <p className="text-gray-300 max-w-xl mx-auto mb-10">
-        For membership inquiries, logistics coordination, or tier upgrades, reach out using the form below.
-        Messages go directly into our concierge pipeline.
-      </p>
-
-      <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-6 bg-neutral-900/60 p-10 rounded-2xl border border-neutral-800">
-        <input type="hidden" name="form-name" value="contact" />
-
-        <input type="text" name="name" placeholder="Full Name" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange} required />
-        <input type="tel" name="phone" placeholder="Phone Number" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange} />
-
-        <select name="contactMethod" className="w-full p-3 rounded bg-neutral-800 text-white" onChange={handleChange}>
-          <option value="email">Email</option>
-          <option value="text">Text</option>
-          <option value="call">Call</option>
-        </select>
-
-        <textarea name="message" placeholder="How can we assist you?" className="w-full p-3 rounded bg-neutral-800 text-white h-32" onChange={handleChange}></textarea>
-
-        <Button type="submit" className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300">Submit</Button>
-      </form>
-    </div>
-  );
-}
-
 function FormsPage() {
   const [formData, setFormData] = React.useState({
     name: "",
@@ -367,7 +333,6 @@ export default function SpannConciergeSite() {
         </div>
         <div className="space-x-6">
           <Link to="/vendors" className="hover:text-gray-400">Vendors</Link>
-          <Link to="/contact" className="hover:text-gray-400">Contact</Link>
           <Link to="/intake" className="hover:text-gray-400">Forms</Link>
 
         </div>
@@ -380,7 +345,6 @@ export default function SpannConciergeSite() {
             <Route path="/" element={<HomePage renewalTiers={renewalTiers} />} />
             <Route path="/waitlist" element={<WaitlistPage />} />
             <Route path="/vendors" element={<VendorsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
 
             {/* 🚀 BOTH ROUTES NOW LOAD THE SAME CORRECT PAGE */}
             <Route path="/forms" element={<IntakePage />} />
