@@ -55,9 +55,12 @@ function TierPage({ renewalTiers }) {
           Each tier unlocks more than service — it’s about trust, speed, and access. Higher tiers mean direct access to
           our private vendor network, reduced turnaround times, and dedicated personal support.
         </p>
-        <Button className="bg-white text-black w-full py-3 rounded-xl text-lg hover:bg-gray-300" onClick={() => navigate('/contact')}>
-          Scheudle to Join {tier.tier}
+        <Button
+          className="bg-white text-black w-full py-3 rounded-xl hover:bg-gray-300"
+          onClick={() => window.open("https://calendly.com/henry-spannconcierge/30min", "_blank")}
+>         Schedule to Join {tier.tier}
         </Button>
+
       </div>
       <Button className="bg-white text-black py-3 px-8 text-lg rounded-xl hover:bg-gray-300" onClick={() => navigate('/contact')}>
         Proceed to Payment
